@@ -1,6 +1,8 @@
 from setuptools import setup , find_packages
 from typing import List
 
+#Declaring variable for setup file
+
 PROJECT_NAME="Insurence_Premium"
 VERSION="1.0.0"
 AUTHOR="Akhil pratap singh"
@@ -24,4 +26,3 @@ description=DESCRIPTION ,
 packages=find_packages(), 
 install_requires=get_requirmenents_list()
 )
-
