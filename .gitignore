@@ -5,6 +5,9 @@ __pycache__/
 
 # C extensions
 *.so
+# vertual env
+*.logs
+venv_n
 
 # Distribution / packaging
 .Python
@@ -103,9 +106,9 @@ celerybeat.pid
 
 # Environments
 .env
-.venv
+.venv_n
 env/
-venv/
+venv_n/
 ENV/
 env.bak/
 venv.bak/
@@ -127,3 +130,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+#vertual envirment
+.venv/
+.git
+.gitignore
