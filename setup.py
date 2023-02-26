@@ -1,28 +1,27 @@
-from setuptools import setup , find_packages
-from typing import List
+import setuptools
 
-#Declaring variable for setup file
+with open("README.md", "r", encoding="utf-8") as f:
+    long_description = f.read()
 
-PROJECT_NAME="Insurence_Premium"
-VERSION="1.0.0"
-AUTHOR="Akhil pratap singh"
-DESCRIPTION="this is insurence premium prediction it will help to know insurence status"
-REQUIREMENTS_FILE_NAME ="requirements.txt"
-HYPHEN_E_DOT="-e ."
+__version__ = "0.0.0"
 
-def get_requirmenents_list()->List[str]:
-    with open(REQUIREMENTS_FILE_NAME) as requiremenets_file:
-        requirement_list=requiremenets_file.readlines()
-        requirement_list = [requirement_name.replace("\n", "") for requirement_name in requirement_list]
-        if HYPHEN_E_DOT in requirement_list:
-            requirement_list.remove(HYPHEN_E_DOT)
-        return requirement_list
+REPO_NAME = "Insurence_Premium"
+AUTHOR_USER_NAME = "sakhilpratap620"
+SRC_REPO = "insurencepremium"
+AUTHOR_EMAIL = "sakhilpratap620@gmail.com"
 
-setup(
-name=PROJECT_NAME,
-version=VERSION,
-author=AUTHOR,
-description=DESCRIPTION ,
-packages=find_packages(), 
-install_requires=get_requirmenents_list()
+setuptools.setup(
+    name=SRC_REPO,
+    version=__version__,
+    author=AUTHOR_USER_NAME,
+    author_email=AUTHOR_EMAIL,
+    description="A small python package for insurence premium prediction app",
+    long_description=long_description,
+    long_description_content="text/markdown",
+    url=f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}",
+    project_urls={
+        "Bug Tracker": f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}/issues",
+    },
+    package_dir={"": "src"},
+    packages=setuptools.find_packages(where="src")
 )

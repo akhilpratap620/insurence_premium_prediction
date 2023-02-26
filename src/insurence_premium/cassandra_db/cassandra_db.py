@@ -5,6 +5,7 @@ from insurence_premium.constant import *
 from insurence_premium.exception import PremiumException
 from insurence_premium.logger import logging
 import pandas as pd
+import csv
 
 
 
@@ -28,6 +29,8 @@ class CassandraDatabaseManager:
         except Exception as e:
             raise PremiumException(e, sys) from e
     def data_finder(self):
+        """data finder will help to fetch data from cassandra database
+        """
         try:
             self.db_info=self.db_info
             cloud_config= {
@@ -45,20 +48,8 @@ class CassandraDatabaseManager:
                     self.a.append(i)
             logging.info("data store in list successfully")
             df=pd.DataFrame(self.a)
-            return df.to_csv("insurence_premium")   
+            return df  
 
-            logging.info("df is found ")     
+            logging.info("df is found")     
 
       
-
-                
-    
-
-        except Exception as e:
-
-            raise PremiumException(e, sys) from e 
-
-        
-
- 
-
