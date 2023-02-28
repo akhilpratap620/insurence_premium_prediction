@@ -2,7 +2,6 @@ artifacts_root: artifacts
 
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  local_data_file: artifacts/data_ingestion/data.zip
-  unzip_dir: artifacts/data_ingestion
-  ingested_train_dir: train
-  ingested_test_dir: test
+  raw_data: artifacts/data_ingestion/raw_data/insurence.csv
+  ingested_train_dir: data_ingestion/train/insurence.csv
+  ingested_test_dir: data_ingestion/test/insurence.csv
