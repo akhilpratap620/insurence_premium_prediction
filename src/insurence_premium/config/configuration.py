@@ -2,6 +2,7 @@ from insurence_premium.constant import *
 from insurence_premium.util.common import read_yaml , create_directories
 import os
 from pathlib import Path
+from insurence_premium.entity import DataIngestionConfig
 from insurence_premium import logger
 from insurence_premium.exception import PremiumException 
 

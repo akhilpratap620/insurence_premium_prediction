@@ -1,0 +1,1 @@
+from insurence_premium.components.data_ingestion import DataIngestion
