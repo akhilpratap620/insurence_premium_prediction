@@ -1,24 +1,20 @@
-import logging
-from datetime import datetime
 import os
-import pandas as pd
-from insurence_premium.constant import get_current_time_stamp 
-LOG_DIR="logs"
+import sys
+import logging
 
-def get_log_file_name():
-    return f"log_{get_current_time_stamp()}.log"
+logging_str = "[%(asctime)s: %(levelname)s: %(module)s]: %(message)s"
+log_dir = "logs"
+log_filepath = os.path.join(log_dir, "running_logs.log")
+os.makedirs(log_dir, exist_ok=True)
 
-LOG_FILE_NAME=get_log_file_name()
+logging.basicConfig(
+    level=logging.INFO, 
+    format=logging_str,
+    handlers=[
+        logging.FileHandler(log_filepath),
+        # logging.StreamHandler(sys.stdout),
+    ])
 
-os.makedirs(LOG_DIR,exist_ok=True)
+logger = logging.getLogger("deepClassifierLogger")
 
-LOG_FILE_PATH = os.path.join(LOG_DIR,LOG_FILE_NAME)
-
-
-
-logging.basicConfig(filename=LOG_FILE_PATH,
-filemode="w",
-format='[%(asctime)s]^;%(levelname)s^;%(lineno)d^;%(filename)s^;%(funcName)s()^;%(message)s',
-level=logging.INFO
-)
 

@@ -1,23 +1,26 @@
 import os
 from datetime import datetime
-
+from pathlib import Path
 
 def get_current_time_stamp():
     return f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}"
 
-ROOT_DIR =os.getcwd()
+ROOT_DIR ="C:\\Users\\somit\\Downloads\\project_ineuron\\insurence_premium_prediction"
+
 CONFIG_DIR="config"
 
 CONFIG_FILE_NAME ="config.yaml"
-CONFIG_FILE_PATH =os.path.join(ROOT_DIR ,CONFIG_DIR , CONFIG_FILE_NAME)
+CONFIG_FILE_PATH =Path(os.path.join(CONFIG_DIR , CONFIG_FILE_NAME))
 
+PARAMS_FILE_NAME ="params.yaml"
+PARAMS_FILE_PATH =Path(PARAMS_FILE_NAME)
 
 CURRENT_TIME_STAMP=get_current_time_stamp()
 
 #data base varibales 
 
 DB_FILE_NAME ="cassandra_db.yaml"
-DB_FILE_PATH =os.path.join(ROOT_DIR ,CONFIG_DIR,DB_FILE_NAME)
+DB_FILE_PATH =Path(os.path.join(ROOT_DIR ,CONFIG_DIR,DB_FILE_NAME))
 CLIENT_ID_KEY = "client_id"
 CLIENT_SECRET_KEY ="client_secret"
 SECRET_BUNDLE_KEY="secret_bundle_path"
