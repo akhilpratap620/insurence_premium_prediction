@@ -1,1 +1,1 @@
-from insurence_premium.entity.config_entity import DataIngestionConfig
+from insurence_premium.entity.config_entity import DataIngestionConfig ,DataValidationConfig

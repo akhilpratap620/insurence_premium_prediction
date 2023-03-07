@@ -1,4 +1,3 @@
-from insurence_premium.exception import PremiumException
 from insurence_premium import logger
 from insurence_premium.entity import DataIngestionConfig
 import csv
@@ -96,4 +95,4 @@ class DataIngestion:
             logger.info(f"{'>>'*20}Data Ingestion log completed.{'<<'*20} \n\n")   
 
         except Exception as e:
-            raise PremiumException(e,sys) from e
+            raise e
