@@ -5,3 +5,9 @@ data_ingestion:
   raw_data: artifacts/data_ingestion/raw_data/insurence.csv
   ingested_train_dir: artifacts/data_ingestion/train/insurence.csv
   ingested_test_dir: artifacts/data_ingestion/test/insurence.csv
+
+data_validation:
+  root_dir: artifacts/data_validation
+  report_file_path: artifact/data_validation/report.json
+  report_page_file_path: artifact/data_validation/report.html  
+  

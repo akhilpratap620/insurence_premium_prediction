@@ -2,9 +2,9 @@ from insurence_premium.constant import *
 from insurence_premium.util.common import read_yaml, create_directories
 import os
 from pathlib import Path
-from insurence_premium.entity import DataIngestionConfig
+from insurence_premium.entity import DataIngestionConfig, DataValidationConfig
 from insurence_premium import logger
-from insurence_premium.exception import PremiumException
+import sys
 
 
 class ConfigurationManager:
@@ -32,4 +32,20 @@ class ConfigurationManager:
                 f"data ingestion config created successfully: [{data_ingestion_config}]"
             )
         except Exception as e:
-            raise PremiumExecption(e, sys) from e
+            raise e
+
+    def get_validation_config(self) -> DataValidationConfig:
+        try:
+            logger.info("start definig data ingestion validation")
+            validation_config = self.config.data_validation
+
+            data_validation_config = DataValidationConfig(
+                root_dir=Path(validation_config.root_dir),
+                schema_file_path=Path()
+                report_file_path=Path(validation_config.report_file_path),
+                report_page_file_path=Path(validation_config.report_page_file_path),
+            )
+            return data_validation_config
+
+        except Exception as e:
+            raise e    
