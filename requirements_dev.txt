@@ -1,17 +1,22 @@
-numpy
-Flask
-gunicorn
-sklearn
-pandas
-PyYAML
-evidently
-dill
+notebook
 matplotlib
+seaborn
 dvc
+python-box==6.0.2
+pyYAML
+tqdm
+ensure==1.0.2
+joblib
+types-PyYAML
+scipy
+mlflow==1.26.1
+evidently
 
-#dev requirements
+
+
+## Dev requirements
 pytest==7.1.3
-mypy==0.971
-flake8==5.0.4
 tox==3.25.1
-black==22.8.0  
+black==22.8.0
+flake8==5.0.4
+mypy==0.971

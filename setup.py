@@ -3,9 +3,9 @@ import setuptools
 with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
-__version__ = "0.0.0"
+__version__ = "0.0.1"
 
-REPO_NAME = "Insurence_Premium"
+REPO_NAME = "insurence_premium_prediction"
 AUTHOR_USER_NAME = "sakhilpratap620"
 SRC_REPO = "insurencepremium"
 AUTHOR_EMAIL = "sakhilpratap620@gmail.com"

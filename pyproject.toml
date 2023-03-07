@@ -8,5 +8,5 @@ testpaths = [
     ]
 
 [tool.mypy]
-mypy_path = "insurence_premium"
+mypy_path = "src"
 ignore_missing_imports = true
