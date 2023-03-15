@@ -8,6 +8,7 @@ data_ingestion:
 
 data_validation:
   root_dir: artifacts/data_validation
-  report_file_path: artifact/data_validation/report.json
-  report_page_file_path: artifact/data_validation/report.html  
+  report_file_path: artifacts/data_validation/report.json
+  report_page_file_path: artifacts/data_validation/report.html 
+  schema_file_path: config/schema.yaml
   

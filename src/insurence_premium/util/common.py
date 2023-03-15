@@ -72,10 +72,6 @@ def load_json(path: Path) -> ConfigBox:
     logger.info(f"json file loaded succesfully from: {path}")
     return ConfigBox(content)
 
-@ensure_annotations
-def write_json(path:Path ,data: Any):
-    with open(path ,'wb') as f:
-        f.write(data)
 
 
 @ensure_annotations

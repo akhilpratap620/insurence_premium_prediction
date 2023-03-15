@@ -7,13 +7,13 @@ from insurence_premium.constant import  *
 from insurence_premium.cassandra_db.cassandra_db import CassandraDatabaseManager
 import sys  
 import os
-from insurence_premium.config import ConfigurationManager
+from insurence_premium.config.configuration import ConfigurationManager
 from sklearn import preprocessing
 from sklearn.model_selection import StratifiedShuffleSplit
 import numpy as np
 from insurence_premium.util import create_directories
 
-import os
+
 
 class DataIngestion:
     def __init__(self , config:DataIngestionConfig):
