@@ -12,3 +12,10 @@ data_validation:
   report_page_file_path: artifacts/data_validation/report.html 
   schema_file_path: config/schema.yaml
   
+data_transformation:
+  root_dir: artifacts/data_transformation
+  train_file_path: artifacts/data_ingestion/train/insurence.csv
+  test_file_path: artifacts/data_ingestion/test/insurence.csv
+  transformed_train_file_path: artifacts/data_transformation/train/insurence.csv
+  transformed_test_file_path: artifacts/data_transformation/test/insurence.csv
+  
