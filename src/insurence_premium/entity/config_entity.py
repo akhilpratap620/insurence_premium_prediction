@@ -15,3 +15,18 @@ class DataValidationConfig:
     report_file_path: Path
     report_page_file_path: Path
     
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    root_dir: Path
+    transformed_train_file_path: Path
+    transformed_test_file_path: Path
+    preprocessing_dir: Path
+    preprocessing_file_path: Path    
+
+@dataclass(frozen=True)
+class DataModelTrainerConfig:
+    root_dir: Path
+    trained_model_file_path: Path
+    base_accuracy: float
+    model_config_file_path: Path
+

@@ -1,7 +1,7 @@
 from insurence_premium.constant import *
 from insurence_premium.util.common import read_yaml, create_directories
 from pathlib import Path
-from insurence_premium.entity import DataIngestionConfig, DataValidationConfig
+from insurence_premium.entity import DataIngestionConfig, DataValidationConfig,DataTransformationConfig ,DataModelTrainerConfig
 from insurence_premium import logger
 
 
@@ -40,3 +40,42 @@ class ConfigurationManager:
         )
         return data_validation_config
 
+    def get_data_transformation_config(self)->DataTransformationConfig:
+        try:
+            transformation_config=self.config.data_transformation
+            data_transformation_config =DataTransformationConfig(
+                root_dir =Path(transformation_config.root_dir),
+                transformed_train_file_path=Path(transformation_config.transformed_train_file_path),
+                transformed_test_file_path=Path(transformation_config.transformed_test_file_path),
+                preprocessing_dir=Path(transformation_config.preprocessing_dir),
+                preprocessing_file_path=Path(transformation_config.preprocessing_file_path)
+                )
+            return data_transformation_config    
+            logging.info(f"return: [{data_ingestion_config}]")
+        except Exception as e:
+            raise e  
+             
+    def get_model_trainer_config(self) -> DataModelTrainerConfig:
+        try:
+            model_trainer_config = self.config.data_model_trainer
+
+            data_model_trainer_config = DataModelTrainerConfig(
+                root_dir=Path(model_trainer_config.root_dir),
+                trained_model_file_path=Path(
+                    model_trainer_config.trained_model_file_path
+                ),
+                base_accuracy=model_trainer_config.base_accuracy,
+                model_config_file_path=Path(
+                    model_trainer_config.model_config_file_path
+                ),
+            )
+            return data_model_trainer_config
+            logger.info(f"model trainer config : {data_model_trainer_config}")
+        except Exception as e:
+            raise e 
+            
+    def get_model_pusher_config(self):
+        try:
+            pass
+        except Exception as e:
+            raise e              

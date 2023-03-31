@@ -5,3 +5,16 @@ children: int64
 smoker: object
 region: object
 expenses: float64
+
+numericals_columns:
+  - age
+  - bmi
+  - children
+  
+categorical_columns:
+  - smoker
+  - region
+  - sex
+
+target_column:
+  - expenses
