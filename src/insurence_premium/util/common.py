@@ -8,7 +8,8 @@ from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
 from typing import Any
-
+import numpy as np
+import dill
 
 @ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
@@ -108,3 +109,47 @@ def get_size(path: Path) -> str:
     """
     size_in_kb = round(os.path.getsize(path) / 1024)
     return f"~ {size_in_kb} KB"
+
+def save_numpy_data(file_path:str ,array:np.array):
+    try:
+        dir_path=os.path.dirname(file_path)
+        os.makedirs(dir_path ,exist_ok=True)
+        with open(file_path ,'wb') as file_obj:
+            np.save(file_obj,array)
+    except Exception as e:
+        raise e        
+
+
+
+def load_numpy_array_data(file_path:str)->np.array:
+    try:
+        with open(file_path ,'rb') as file_obj:
+            return np.load(file_obj)
+    except Exception as e:
+        raise e
+
+def save_object(file_path:str, obj):
+    try:
+        dir_path=os.path.dirname(file_path)
+        os.makedirs(dir_path, exist_ok=True)
+        with open(file_path ,'wb') as file_obj:
+            dill.dump(obj, file_obj)
+
+    except Exception as e:
+        raise e
+
+def load_object(file_path:str):
+    try:
+        with open(file_path,'rb') as obj:
+            obj=dill.load(obj)
+            return obj
+    except Exception as e:
+        raise e
+
+
+def load_object(file_path:str):
+    try:
+        with open(file_path ,'rb') as file_obj:
+            dill.load(file_obj) 
+    except Exception as e:
+        raise e               

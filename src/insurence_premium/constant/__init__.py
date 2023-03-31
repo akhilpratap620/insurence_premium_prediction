@@ -11,6 +11,8 @@ CONFIG_DIR="config"
 
 CONFIG_FILE_NAME ="config.yaml"
 CONFIG_FILE_PATH =Path(os.path.join(CONFIG_DIR , CONFIG_FILE_NAME))
+SCHEMA_FILE_NAME="schema.yaml"
+SCHEMA_FILE_PATH =Path(os.path.join(CONFIG_DIR ,SCHEMA_FILE_NAME))
 
 
 PARAMS_FILE_NAME ="params.yaml"
@@ -49,3 +51,16 @@ DATA_VALIDATION_ARTIFACT_DIR ="data_validation"
 DATA_VALIDATION_SCHEMA_DIR_KEY ="schema_dir"
 DATA_VALIDATION_REPORT_FILE_NAME_KEY = "report_file_name"
 DATA_VALIDATION_REPORT_PAGE_FILE_NAME_KEY = "report_page_file_name"
+
+#numercal and categoricakl columns
+NUMERICAL_COLUMN_KEY='numericals_columns'
+CATEGORICAL_COLUMN_KEY='categorical_columns'
+TARGET_COLUMN_KEY='target_column'
+
+# model trainer constants columns
+GRID_SEARCH_KEY = "grid_search"
+MODULE_KEY = "module"
+CLASS_KEY = "class"
+PARAM_KEY = "params"
+MODEL_SELECTION_KEY = "model_selection"
+SEARCH_PARAM_GRID_KEY = "search_param_grid"

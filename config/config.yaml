@@ -14,8 +14,14 @@ data_validation:
   
 data_transformation:
   root_dir: artifacts/data_transformation
-  train_file_path: artifacts/data_ingestion/train/insurence.csv
-  test_file_path: artifacts/data_ingestion/test/insurence.csv
-  transformed_train_file_path: artifacts/data_transformation/train/insurence.csv
-  transformed_test_file_path: artifacts/data_transformation/test/insurence.csv
-  
+  transformed_train_file_path: artifacts/data_transformation/train/insurence.npz
+  transformed_test_file_path: artifacts/data_transformation/test/insurence.npz
+  preprocessing_dir:  artifacts/data_transformation/preprocessed_file
+  preprocessing_file_path:  artifacts/data_transformation/preprocessed_file/preprocessing.pkl
+
+data_model_trainer:
+  root_dir: artifacts/data_model_trainer
+  trained_model_file_path: artifacts/data_model_trainer/trained_model/model.pkl
+  base_accuracy: 0.6
+  model_config_file_path: config/model.yaml
+
