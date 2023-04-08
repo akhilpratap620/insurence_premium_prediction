@@ -64,3 +64,12 @@ CLASS_KEY = "class"
 PARAM_KEY = "params"
 MODEL_SELECTION_KEY = "model_selection"
 SEARCH_PARAM_GRID_KEY = "search_param_grid"
+
+# model evaluation constant variable
+MODEL_EVALUATION_FILE_NAME= "model_evaluation_file_name"
+
+
+#model evaluation constant variable
+MODEL_EVALUATION_FILE_NAME= "model_evaluation_file_name"
+BEST_MODEL_KEY="best_model"
+MODEL_PATH_KEY="model"

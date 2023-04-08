@@ -42,3 +42,10 @@ MetricInfoArtifact = namedtuple(
         "index_number",
     ],
 )
+
+ModelTrainerArtifact = namedtuple("ModelTrainerArtifact", ["is_trained", "message", "trained_model_file_path",
+                                                           "train_rmse", "test_rmse", "train_accuracy", "test_accuracy",
+                                                           "model_accuracy"])
+
+
+ModelEvaluationArtifact=namedtuple("ModelEvaluationArtifact",['evaluated_model_path', 'is_model_accepted'])
