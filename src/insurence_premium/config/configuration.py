@@ -1,8 +1,9 @@
 from insurence_premium.constant import *
 from insurence_premium.util.common import read_yaml, create_directories
 from pathlib import Path
-from insurence_premium.entity import DataIngestionConfig, DataValidationConfig,DataTransformationConfig ,DataModelTrainerConfig
+from insurence_premium.entity import DataIngestionConfig, DataValidationConfig,DataTransformationConfig ,DataModelTrainerConfig,DataModelEvaluation
 from insurence_premium import logger
+
 
 
 
@@ -14,6 +15,7 @@ class ConfigurationManager:
 
         self.config =read_yaml(config_filepath)
         self.params =read_yaml(params_filepath)
+        self.time_stamp=CURRENT_TIME_STAMP
 
         create_directories([self.config.artifacts_root])
     
@@ -61,9 +63,9 @@ class ConfigurationManager:
 
             data_model_trainer_config = DataModelTrainerConfig(
                 root_dir=Path(model_trainer_config.root_dir),
-                trained_model_file_path=Path(
+                trained_model_file_path=
                     model_trainer_config.trained_model_file_path
-                ),
+                ,
                 base_accuracy=model_trainer_config.base_accuracy,
                 model_config_file_path=Path(
                     model_trainer_config.model_config_file_path
@@ -74,8 +76,17 @@ class ConfigurationManager:
         except Exception as e:
             raise e 
             
-    def get_model_pusher_config(self):
+    def get_model_evaluation_config(self):
         try:
-            pass
+            data_evaluation_config=self.config.data_model_evaluation
+            model_evaluation_file_path=os.path.join(data_evaluation_config.root_dir ,data_evaluation_config.model_evaluation_file_name)
+            model_evaluation_config=DataModelEvaluation(
+                root_dir= Path(data_evaluation_config.root_dir),
+                model_evaluation_file_path= Path(model_evaluation_file_path),
+                time_stamp= self.time_stamp
+
+                
+            )
+            return model_evaluation_config
         except Exception as e:
-            raise e              
+            raise e            
