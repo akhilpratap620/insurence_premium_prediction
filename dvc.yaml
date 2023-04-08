@@ -35,7 +35,17 @@ stages:
     deps:
       - src\insurence_premium\pipeline\stage_04_data_model_trainer.py
       - artifacts/data_ingestion/raw_data
-      - artifacts/data_transformation- artifacts/data_transformation- artifacts/data_transformation
+      - artifacts/data_transformation
       
       - config/config.yaml
       - config/schema.yaml
+
+    outs:
+      - artifacts/data_model_trainer 
+
+  model_evaluation:
+    cmd: python src\insurence_premium\pipeline\stage_05_model_evaluation.py
+    deps:
+      - src\insurence_premium\pipeline\stage_05_model_evaluation.py
+      - artifacts/data_model_trainer 
+         

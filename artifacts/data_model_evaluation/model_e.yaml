@@ -1,2 +1,7 @@
 best_model:
   model: artifacts/data_model_trainer/trained_model/model.pkl
+history:
+  2023-04-08-16-10-21:
+    model: artifacts/data_model_trainer/trained_model/model.pkl
+  2023-04-08-16-29-35:
+    model: artifacts/data_model_trainer/trained_model/model.pkl

@@ -73,3 +73,5 @@ MODEL_EVALUATION_FILE_NAME= "model_evaluation_file_name"
 MODEL_EVALUATION_FILE_NAME= "model_evaluation_file_name"
 BEST_MODEL_KEY="best_model"
 MODEL_PATH_KEY="model"
+
+HISTORY_KEY:"history"

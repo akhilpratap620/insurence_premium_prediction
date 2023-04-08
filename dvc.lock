@@ -4,7 +4,7 @@ stages:
     cmd: python src/insurence_premium/pipeline/stage_01_data_ingestion.py
     deps:
     - path: config/config.yaml
-      md5: a2aaaefa0fdc62624c889a62e860687f
+      md5: 7efe81cc252f48ac681525f2169b9f67
       size: 1297
     - path: src/insurence_premium/pipeline/stage_01_data_ingestion.py
       md5: 10b9caf5585b15704039e3a487aec976
@@ -22,14 +22,14 @@ stages:
       size: 57143
       nfiles: 1
     - path: config/config.yaml
-      md5: a2aaaefa0fdc62624c889a62e860687f
+      md5: 7efe81cc252f48ac681525f2169b9f67
       size: 1297
     - path: src/insurence_premium/pipeline/stage_02_data_validation.py
       md5: eb59e0f8d2ef024efba24ce0d966f7ce
       size: 781
     outs:
     - path: artifacts/data_validation
-      md5: c65374a54d5a1e2448949575ff41a0f2.dir
+      md5: 054d7177ffcf47b8120e29a2c17a9b0b.dir
       size: 2782114
       nfiles: 2
   data_transformation:
@@ -40,11 +40,11 @@ stages:
       size: 57143
       nfiles: 1
     - path: artifacts/data_validation
-      md5: c65374a54d5a1e2448949575ff41a0f2.dir
+      md5: 054d7177ffcf47b8120e29a2c17a9b0b.dir
       size: 2782114
       nfiles: 2
     - path: config/config.yaml
-      md5: a2aaaefa0fdc62624c889a62e860687f
+      md5: 7efe81cc252f48ac681525f2169b9f67
       size: 1297
     - path: config/schema.yaml
       md5: 715d245f37a77d124b7a5f4ba800b352
@@ -54,6 +54,41 @@ stages:
       size: 485
     outs:
     - path: artifacts/data_transformation
-      md5: fad2e3c60cdb66fe6050d646a1fdb744.dir
+      md5: f8c52e97553875a7e4f023828bb99dfb.dir
       size: 132047
       nfiles: 3
+  model_trainer:
+    cmd: python src\insurence_premium\pipeline\stage_04_data_model_trainer.py
+    deps:
+    - path: artifacts/data_ingestion/raw_data
+      md5: 579e0d85db825f5ae2fc76a862febdce.dir
+      size: 57143
+      nfiles: 1
+    - path: artifacts/data_transformation
+      md5: f8c52e97553875a7e4f023828bb99dfb.dir
+      size: 132047
+      nfiles: 3
+    - path: config/config.yaml
+      md5: 7efe81cc252f48ac681525f2169b9f67
+      size: 1297
+    - path: config/schema.yaml
+      md5: 715d245f37a77d124b7a5f4ba800b352
+      size: 251
+    - path: src\insurence_premium\pipeline\stage_04_data_model_trainer.py
+      md5: 4258ee19d1c1da2f9a1cf946fdc73d06
+      size: 549
+    outs:
+    - path: artifacts/data_model_trainer
+      md5: 91678c2c945c53298f09fe04376b1bba.dir
+      size: 1166685
+      nfiles: 1
+  model_evaluation:
+    cmd: python src\insurence_premium\pipeline\stage_05_model_evaluation.py
+    deps:
+    - path: artifacts/data_model_trainer
+      md5: 91678c2c945c53298f09fe04376b1bba.dir
+      size: 1166685
+      nfiles: 1
+    - path: src\insurence_premium\pipeline\stage_05_model_evaluation.py
+      md5: d12b48a00053f6e49d96ff7f0d416240
+      size: 507

@@ -25,7 +25,7 @@ data_transformation:
 data_model_trainer:
   root_dir: artifacts/data_model_trainer
   trained_model_file_path: artifacts/data_model_trainer/trained_model/model.pkl
-  base_accuracy: 0.6
+  base_accuracy: 0.9
   model_config_file_path: config/model.yaml
 
 data_model_evaluation:
