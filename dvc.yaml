@@ -1,1 +1,41 @@
-key:value
+stages:
+  data_ingestion:
+    cmd: python src/insurence_premium/pipeline/stage_01_data_ingestion.py
+    deps:
+      - src/insurence_premium/pipeline/stage_01_data_ingestion.py
+      - config/config.yaml
+      
+    outs:
+      - artifacts/data_ingestion/raw_data
+      
+
+  data_validation:
+    cmd: python src/insurence_premium/pipeline/stage_02_data_validation.py
+    deps:
+      - src/insurence_premium/pipeline/stage_02_data_validation.py
+      - artifacts/data_ingestion/raw_data
+      - config/config.yaml
+
+    outs:
+      - artifacts/data_validation
+  data_transformation:
+    cmd: python src\insurence_premium\pipeline\stage_03_data_transformation.py
+    deps:
+      - src\insurence_premium\pipeline\stage_03_data_transformation.py
+      - artifacts/data_ingestion/raw_data
+      - artifacts/data_validation
+      - config/config.yaml
+      - config/schema.yaml
+
+    outs:
+      - artifacts/data_transformation  
+
+  model_trainer:
+    cmd: python src\insurence_premium\pipeline\stage_04_data_model_trainer.py
+    deps:
+      - src\insurence_premium\pipeline\stage_04_data_model_trainer.py
+      - artifacts/data_ingestion/raw_data
+      - artifacts/data_transformation- artifacts/data_transformation- artifacts/data_transformation
+      
+      - config/config.yaml
+      - config/schema.yaml

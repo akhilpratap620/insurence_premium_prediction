@@ -1,0 +1,59 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/insurence_premium/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: config/config.yaml
+      md5: a2aaaefa0fdc62624c889a62e860687f
+      size: 1297
+    - path: src/insurence_premium/pipeline/stage_01_data_ingestion.py
+      md5: 10b9caf5585b15704039e3a487aec976
+      size: 911
+    outs:
+    - path: artifacts/data_ingestion/raw_data
+      md5: 579e0d85db825f5ae2fc76a862febdce.dir
+      size: 57143
+      nfiles: 1
+  data_validation:
+    cmd: python src/insurence_premium/pipeline/stage_02_data_validation.py
+    deps:
+    - path: artifacts/data_ingestion/raw_data
+      md5: 579e0d85db825f5ae2fc76a862febdce.dir
+      size: 57143
+      nfiles: 1
+    - path: config/config.yaml
+      md5: a2aaaefa0fdc62624c889a62e860687f
+      size: 1297
+    - path: src/insurence_premium/pipeline/stage_02_data_validation.py
+      md5: eb59e0f8d2ef024efba24ce0d966f7ce
+      size: 781
+    outs:
+    - path: artifacts/data_validation
+      md5: c65374a54d5a1e2448949575ff41a0f2.dir
+      size: 2782114
+      nfiles: 2
+  data_transformation:
+    cmd: python src\insurence_premium\pipeline\stage_03_data_transformation.py
+    deps:
+    - path: artifacts/data_ingestion/raw_data
+      md5: 579e0d85db825f5ae2fc76a862febdce.dir
+      size: 57143
+      nfiles: 1
+    - path: artifacts/data_validation
+      md5: c65374a54d5a1e2448949575ff41a0f2.dir
+      size: 2782114
+      nfiles: 2
+    - path: config/config.yaml
+      md5: a2aaaefa0fdc62624c889a62e860687f
+      size: 1297
+    - path: config/schema.yaml
+      md5: 715d245f37a77d124b7a5f4ba800b352
+      size: 251
+    - path: src\insurence_premium\pipeline\stage_03_data_transformation.py
+      md5: 9f4cda23b66aa1600907aac8d56fd0b6
+      size: 485
+    outs:
+    - path: artifacts/data_transformation
+      md5: fad2e3c60cdb66fe6050d646a1fdb744.dir
+      size: 132047
+      nfiles: 3
