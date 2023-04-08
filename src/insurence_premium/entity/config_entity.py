@@ -26,7 +26,12 @@ class DataTransformationConfig:
 @dataclass(frozen=True)
 class DataModelTrainerConfig:
     root_dir: Path
-    trained_model_file_path: Path
+    trained_model_file_path: str
     base_accuracy: float
     model_config_file_path: Path
 
+@dataclass
+class DataModelEvaluation:
+    root_dir: Path
+    model_evaluation_file_path:Path
+    time_stamp: str

@@ -10,6 +10,8 @@ from pathlib import Path
 from typing import Any
 import numpy as np
 import dill
+import pandas as pd
+
 
 @ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
@@ -27,8 +29,7 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
             content = yaml.safe_load(yaml_file)
             logger.info(f"yaml file: {path_to_yaml} loaded successfully")
             return ConfigBox(content)
-    except BoxValueError:
-        raise ValueError("yaml file is empty")
+    
     except Exception as e:
         raise e
 
@@ -147,9 +148,46 @@ def load_object(file_path:str):
         raise e
 
 
-def load_object(file_path:str):
+            
+
+def write_yaml_file(file_path:str,data:dict=None):
+    """
+    Create yaml file 
+    file_path: str
+    data: dict
+    """
     try:
-        with open(file_path ,'rb') as file_obj:
-            dill.load(file_obj) 
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        with open(file_path,"w") as yaml_file:
+            if data is not None:
+                yaml.dump(data,yaml_file)
     except Exception as e:
-        raise e               
+        raise e    
+
+
+def load_data(file_path:str ,schema_file_path:str)->pd.DataFrame:
+        try:
+            schema=read_yaml(schema_file_path)
+            data_frame=pd.read_csv(file_path,index_col='Unnamed: 0')
+            error_message =''
+
+            for column in data_frame.columns:
+                if column in list(schema.keys()):
+                    data_frame[column].astype(schema[column])
+                else:
+                    error_message=f"{error_message} \ncolumn:[{column}] is not in the schema"    
+            if len(error_message)>0:
+                raise Exception(error_message)
+            
+            return data_frame      
+        except Exception as e:
+            raise e
+
+def read_yaml_file(file_path:str):
+    try:
+        with open(file_path ,'r') as f:
+            response =yaml.safe_load(f)
+            return response
+
+    except Exception as e:
+        raise e
