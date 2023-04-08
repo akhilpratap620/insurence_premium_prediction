@@ -1,0 +1,2 @@
+best_model:
+  model: artifacts/data_model_trainer/trained_model/model.pkl
