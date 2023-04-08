@@ -4,8 +4,10 @@ from insurence_premium.constant import *
 from insurence_premium.entity.model_factory import evaluate_regression_model
 from insurence_premium.entity.model_entity import ModelEvaluationArtifact
 from insurence_premium.config import ConfigurationManager
-from insurence_premium.util.common import load_data ,load_object ,read_yaml ,read_yaml_file
+from insurence_premium.util.common import load_data ,load_object ,read_yaml ,read_yaml_file,write_yaml_file
 from insurence_premium import logger
+
+HISTORY_KEY="history"
 
 
 
@@ -121,7 +123,7 @@ class ModelEvalution:
                                                                y_train=train_target_arr,
                                                                x_test=test_dataframe,
                                                                y_test=test_target_arr,
-                                                               base_accuracy=self.model_trainer_artifact.model_accuracy,
+                                                               base_accuracy=0.6,
                                                                )
             logger.info(f"Model evaluation completed. model metric artifact: {metric_info_artifact}")
 
