@@ -58,7 +58,7 @@ class ModelTrainer:
 
             model_factory = ModelFactory(config_file_path=model_config_file_path)
 
-            base_accuracy = self.data_trainer_config.base_accuracy
+            base_accuracy = 0.6
             logger.info(f"expected accuracy:{base_accuracy}")
 
             best_model = model_factory.get_best_model(x=x_train,y=y_train,base_accuracy=base_accuracy)
