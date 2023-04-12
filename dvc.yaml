@@ -48,4 +48,12 @@ stages:
     deps:
       - src\insurence_premium\pipeline\stage_05_model_evaluation.py
       - artifacts/data_model_trainer 
-         
+
+    outs:
+      - artifacts/data_model_evaluation    
+
+  model_pusher:
+    cmd: python src/insurence_premium/pipeline/stage_06_model_pusher.py
+    deps:
+      - src/insurence_premium/pipeline/stage_06_model_pusher.py
+      - artifacts/data_model_evaluation        
