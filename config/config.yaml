@@ -33,6 +33,6 @@ data_model_evaluation:
   model_evaluation_file_name: model_e.yaml
   
 model_pusher:
-  root_dir: artifacts/model_pusher
+  root_dir: prediction_services/saved_model/model.pkl
      
 

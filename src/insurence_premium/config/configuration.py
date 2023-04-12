@@ -1,7 +1,8 @@
 from insurence_premium.constant import *
 from insurence_premium.util.common import read_yaml, create_directories
 from pathlib import Path
-from insurence_premium.entity import DataIngestionConfig, DataValidationConfig,DataTransformationConfig ,DataModelTrainerConfig,DataModelEvaluation
+from insurence_premium.entity import DataIngestionConfig, DataValidationConfig, \
+DataTransformationConfig ,DataModelTrainerConfig,DataModelEvaluation,DataModelPusher
 from insurence_premium import logger
 
 
@@ -84,9 +85,25 @@ class ConfigurationManager:
                 root_dir= Path(data_evaluation_config.root_dir),
                 model_evaluation_file_path= Path(model_evaluation_file_path),
                 time_stamp= self.time_stamp
+    
 
+    
                 
             )
             return model_evaluation_config
         except Exception as e:
             raise e            
+
+    def get_model_pusher_config(self):
+        try:
+            model_pusher_config=self.config.model_pusher
+
+            data_model_pusher=DataModelPusher(model_pusher_file_path=model_pusher_config.root_dir)
+
+
+            return data_model_pusher
+            logger.info(f"model_pusher config:{data_model_pusher}")
+
+            
+        except Exception as e:
+            raise e          

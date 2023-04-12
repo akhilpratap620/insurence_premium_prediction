@@ -35,3 +35,10 @@ class DataModelEvaluation:
     root_dir: Path
     model_evaluation_file_path:Path
     time_stamp: str
+    
+from dataclasses import dataclass
+@dataclass
+class DataModelPusher:
+    model_pusher_file_path: str
+
+        
