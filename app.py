@@ -2,6 +2,7 @@ import os
 from flask import Flask ,request, render_template
 import numpy as np
 import pandas as pd 
+from insurence_premium import logger
 from sklearn.preprocessing import StandardScaler
 from insurence_premium.pipeline.prediction_pipeline import CustomData ,PredictPipeline
 
@@ -21,7 +22,7 @@ def prediction_data():
         data=CustomData(
             age=request.form.get('age'),
             sex=request.form.get('sex'),
-            bmi=request.form.get('bmi'), 
+            bmi=float(request.form.get('bmi')), 
             children=request.form.get('children'),
             smoker=request.form.get('smoker'),
             region=request.form.get('region')

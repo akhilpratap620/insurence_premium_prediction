@@ -43,6 +43,7 @@ class CustomData:
                 "region":[self.region]
             }
             return pd.DataFrame(custom_data)
+            logger.info(f"age:{type(self.age)} ,bmi:{type(self.bmi)}")
         except Exception as e:
             raise e    
     
