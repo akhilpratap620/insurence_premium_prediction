@@ -14,7 +14,28 @@ model_selection:
       fit_intercept:
       - true
       - false
+  
   module_1:
+    class: Ridge
+    module: sklearn.linear_model
+    params:
+      fit_intercept: true
+    search_param_grid:
+      fit_intercept:
+      - true
+      - false   
+
+  module_2:
+    class: ElasticNet
+    module: sklearn.linear_model
+    params:
+      fit_intercept: true
+    search_param_grid:
+      fit_intercept:
+      - true
+      - false     
+
+  module_3:
     class: RandomForestRegressor
     module: sklearn.ensemble
     params:
@@ -22,3 +43,5 @@ model_selection:
     search_param_grid:
       min_samples_leaf:
       - 6
+      - 4 
+      - 7   
