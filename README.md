@@ -19,9 +19,15 @@
 
 ## Deployment
 
-This project is deployed in aws 
+This project is deployed in aws and link is
 
 ```bash
-  run app.py
+  1."https://ec2-3-110-121-180.ap-south-1.compute.amazonaws.com"
+  2.'https://3.110.121.180:8080"
 ```
-
+```bash
+this link is will be closed because of charges
+```
+## deployment process
+```we will use github action for deployment process
+```
